@@ -25,6 +25,7 @@ class TvShow extends Component {
   render() {
     return (
       <>
+      <h1 align="center">Weekly Trending T.V. Shows</h1>
         <Grid>
           { this.state.data.results.map(show =>
           <Col xs={6} md={4}>
