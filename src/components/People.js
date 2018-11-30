@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import LinesEllipis from 'react-lines-ellipsis'
 import avatar_blank_tall from '../Images/avatar_blank_tall.png';
 import {
   Grid,
@@ -7,6 +8,7 @@ import {
   Thumbnail,
   Image
 } from 'react-bootstrap';
+import TvShow from './TvShow';
 
 const key = process.env.REACT_APP_API_KEY
 const BASE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${key}`
@@ -31,21 +33,21 @@ class People extends React.Component {
         if (r.profile_path !== null) {
           return(
             <Col xs={6} md={4}>
-              <Thumbnail style={{height: "47em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
+              <Thumbnail style={{height: "45em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
                 <h3>{r.name}</h3>
                 <p>Known For {r.known_for_department}</p>
-                <p>Popularity: {r.popularity}</p>
+                <p>Known Work {r.known_for[0].original_title}</p>
               </Thumbnail>
             </Col>
             )
           } else {
             return(
               <Col xs={6} md={4}>
-                <Thumbnail style={{height: "47em"}} responsive>
+                <Thumbnail style={{height: "45em"}} responsive>
                   <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
                   <h3>{r.name}</h3>
                   <p>Known For {r.known_for_department}</p>
-                  <p>Popularity: {r.popularity}</p>
+                  <p>Known Work {r.known_for[0].original_title}</p>
                 </Thumbnail>
               </Col>
               )
