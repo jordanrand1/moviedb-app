@@ -1,11 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Grid, Row, Col } from 'react-bootstrap';
-
-
-const key = process.env.REACT_APP_API_KEY
-const URL = `https://api.themoviedb.org/3/trending/all/week?api_key=${key}`
+import { Grid, Row, Col, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Hero = styled.div`
   height = 100vh;
@@ -15,33 +12,51 @@ const Hero = styled.div`
 class Home extends React.Component {
 
   state = {
-    data: {}
+    movieData: {},
+    showData: {},
+    peopleData: {},
   }
 
   componentDidMount() {
-    axios.get(URL)
+    const key = process.env.REACT_APP_API_KEY
+    const MOVIE_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US`
+    const SHOW_URL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${key}&language=en-US`
+    const PEOPLE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${key}`
+
+    axios.get(MOVIE_URL)
       .then( res => this.setState({
-        data: res.data
+        movieData: res.data
+      })
+    )
+    axios.get(SHOW_URL)
+      .then( res => this.setState({
+        showData: res.data
+      })
+    )
+    axios.get(PEOPLE_URL)
+      .then( res => this.setState({
+        peopleData: res.data
       })
     )
   }
 
-  topFour = () => {
-    const { results } = this.state.data
+  topFourMovies = () => {
+    const { results } = this.state.movieData
     var topFourMovies = []
     if ( results !== undefined) {
       const topNum = 4
       for ( var i = 0; i < topNum; i++ ) {
-        console.log(`https://image.tmdb.org/t/p/w500${results[i].poster_path}`)
         topFourMovies.push(
           <Col xs={6} md={3} style={{paddingLeft: '0px', paddingRight: '0px'}}>
-            <div style={{
-              width: '100%',
-              height: '100vh',
-              backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].poster_path})`,
-              backgroundPositionX: 'center',
-            }}>
-            </div>
+            <Link to={`/movie/${results[i].id}`}>
+              <div style={{
+                width: '100%',
+                height: '100vh',
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].poster_path})`,
+                backgroundPositionX: 'center',
+              }}>
+              </div>
+            </Link>
           </Col>
         )
       }
@@ -49,14 +64,92 @@ class Home extends React.Component {
     }
   }
 
+  topFourShows = () => {
+    const { results } = this.state.showData
+    var topFourShows = []
+    if ( results !== undefined) {
+      const topNum = 4
+      for ( var i = 0; i < topNum; i++ ) {
+        topFourShows.push(
+          <Col xs={6} md={3} style={{paddingLeft: '0px', paddingRight: '0px'}}>
+            <Link to={`/tv/${results[i].id}`}>
+              <div style={{
+                width: '100%',
+                height: '100vh',
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].poster_path})`,
+                backgroundPositionX: 'center',
+              }}>
+              </div>
+            </Link>
+          </Col>
+        )
+      }
+      return topFourShows
+    }
+  }
+
+  topFourPeople = () => {
+    const { results } = this.state.peopleData
+    var topFourPeople = []
+    if ( results !== undefined) {
+      const topNum = 4
+      for ( var i = 0; i < topNum; i++ ) {
+        topFourPeople.push(
+          <Col xs={6} md={3} style={{paddingLeft: '0px', paddingRight: '0px'}}>
+            <Link to={`/people/${results[i].id}`}>
+              <div style={{
+                width: '100%',
+                height: '100vh',
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].profile_path})`,
+                backgroundPositionX: 'center',
+              }}>
+              </div>
+            </Link>
+          </Col>
+        )
+      }
+      return topFourPeople
+    }
+  }
+
   render() {
     return (
       <>
-        <Grid style={{padding: '0px', margin: '0px', width: '100%'}}>
-          <Row className="show-grid">
-            {this.topFour()}
-          </Row>
-        </Grid>
+      <Carousel>
+        <Carousel.Item>
+          <Grid style={{padding: '0px', margin: '0px', width: '100%'}}>
+            <Row className="show-grid">
+              {this.topFourMovies()}
+            </Row>
+          </Grid>
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Grid style={{padding: '0px', margin: '0px', width: '100%'}}>
+            <Row className="show-grid">
+              {this.topFourShows()}
+            </Row>
+          </Grid>
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Grid style={{padding: '0px', margin: '0px', width: '100%'}}>
+            <Row className="show-grid">
+              {this.topFourPeople()}
+            </Row>
+          </Grid>
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>;
       </>
     )
   }
