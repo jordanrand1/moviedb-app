@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import Blank_Avatar from '../Images/Blank_Avatar.png';
+import avatar_blank_tall from '../Images/avatar_blank_tall.png';
 import {
   Grid,
   Col,
   Thumbnail,
+  Image
 } from 'react-bootstrap';
 
 const key = process.env.REACT_APP_API_KEY
@@ -39,7 +40,8 @@ class People extends React.Component {
           } else {
             return(
               <Col xs={6} md={4}>
-                <Thumbnail style={{height: "47em"}} src={Blank_Avatar} responsive alt="trending person">
+                <Thumbnail style={{height: "47em"}} responsive>
+                  <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
                   <h3>{r.name}</h3>
                   <p>{r.known_for_department}</p>
                 </Thumbnail>
