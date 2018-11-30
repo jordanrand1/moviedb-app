@@ -33,7 +33,8 @@ class People extends React.Component {
             <Col xs={6} md={4}>
               <Thumbnail style={{height: "47em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
                 <h3>{r.name}</h3>
-                <p>{r.known_for_department}</p>
+                <p>Known For {r.known_for_department}</p>
+                <p>Popularity: {r.popularity}</p>
               </Thumbnail>
             </Col>
             )
@@ -43,7 +44,8 @@ class People extends React.Component {
                 <Thumbnail style={{height: "47em"}} responsive>
                   <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
                   <h3>{r.name}</h3>
-                  <p>{r.known_for_department}</p>
+                  <p>Known For {r.known_for_department}</p>
+                  <p>Popularity: {r.popularity}</p>
                 </Thumbnail>
               </Col>
               )
