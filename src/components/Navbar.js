@@ -18,18 +18,17 @@ class NavBar extends React.Component {
          </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-        <NavItem eventKey={1} href="/trending">
-          Trending
+        <NavItem eventKey={1} href="/movies">
+          Movies
         </NavItem>
-        <NavItem eventKey={2} href="/genres">
-          Genres
+        <NavItem eventKey={2} href="/tvShows">
+          T.V. Shows
         </NavItem>
-        </Nav>        
-        <Nav pullRight>
-        <NavItem pullRight eventKey={3} href="/something">
-          Something
+        <NavItem pullRight eventKey={3} href="/people">
+          People
         </NavItem>
-        </Nav>
+        </Nav>   
+        <Navbar.Text pullRight>Welcome to the Movies</Navbar.Text>     
       </Navbar>
     )
   }
