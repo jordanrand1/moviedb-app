@@ -62,6 +62,7 @@ class Home extends React.Component {
   topFourShows = () => {
     const { results } = this.state.showData
     var topFourShows = []
+    
     if ( results !== undefined) {
       const topNum = 4
       for ( var i = 0; i < topNum; i++ ) {

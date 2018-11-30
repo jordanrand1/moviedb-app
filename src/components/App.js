@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import People from './People';
 import TvShow from './TvShow';
+import Movie from './Movie';
 import Navbar from './Navbar';
 import DetailedView from './DetailedView';
 import '../App.css';
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path='/tv/:id'  component={DetailedView} />
             <Route exact path='/people'  component={People} />
             <Route exact path='/tvshow'  component={TvShow} />
+            <Route exact path='/movies'  component={Movie} />
           </Switch>
         </>
       </Router>
