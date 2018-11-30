@@ -29,7 +29,7 @@ class NavBar extends React.Component {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink eventKey={2} to="/tvShows">
+            <NavLink eventKey={2} to="/tvshow">
               T.V. Shows
             </NavLink>
           </NavItem>

@@ -4,7 +4,7 @@ class TvShow extends Component {
   render() {
     return (
         <div>
-          <p>Testing</p>
+          <p>TV Show</p>
         </div>
     );
   }
