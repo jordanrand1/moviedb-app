@@ -12,7 +12,7 @@ class NavBar extends React.Component {
   }
   render() {
     return (
-      <Navbar inverse collapseOnSelect fluid>
+      <Navbar inverse collapseOnSelect fluid style={{marginBottom: '0px'}}>
         <Navbar.Header>
           <Navbar.Brand>
             <NavLink to="/">

@@ -13,8 +13,7 @@ const BASE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${ke
 class People extends React.Component {
 
   state = {
-    data: { results: [] },
-    picture: "",
+    data: { results: [] }
   }
 
   componentDidMount() {
