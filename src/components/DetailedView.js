@@ -43,7 +43,6 @@ class DetailedView extends React.Component {
       revenue,
       name,
       first_air_date,
-      popularity,
     } = this.state.data
     return (
       <Background>

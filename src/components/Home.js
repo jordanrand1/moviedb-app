@@ -1,13 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import { Grid, Row, Col, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-const Hero = styled.div`
-  height = 100vh;
-  width = 100%;
-`
 
 class Home extends React.Component {
 
