@@ -3,8 +3,6 @@ import {
   Navbar,
   Nav,
   NavItem,
-  NavDropdown,
-  MenuItem,
 } from 'react-bootstrap';
 
 class NavBar extends React.Component {
@@ -13,26 +11,24 @@ class NavBar extends React.Component {
   }
   render() {
     return (
-      <Navbar>
+      <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/home">React-Bootstrap</a>
+            <a href="/home">Home</a>
          </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-        <NavItem eventKey={1} href="#">
-          Link
+        <NavItem eventKey={1} href="/trending">
+          Trending
         </NavItem>
-        <NavItem eventKey={2} href="#">
-          Link
+        <NavItem eventKey={2} href="/genres">
+          Genres
         </NavItem>
-          <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1}>Action</MenuItem>
-            <MenuItem eventKey={3.2}>Another action</MenuItem>
-            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={3.4}>Separated link</MenuItem>
-          </NavDropdown>
+        </Nav>        
+        <Nav pullRight>
+        <NavItem pullRight eventKey={3} href="/something">
+          Something
+        </NavItem>
         </Nav>
       </Navbar>
     )
