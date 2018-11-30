@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Navbar } from 'react-bootstrap';
+import { 
+  Navbar,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem,
+} from 'react-bootstrap';
 
 class NavBar extends React.Component {
   rightNavs = () => {
