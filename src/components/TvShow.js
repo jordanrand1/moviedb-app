@@ -4,8 +4,9 @@ import {
   Grid,
   Col,
   Thumbnail,
-  Row,
  } from 'react-bootstrap';
+ import LinesEllipsis from 'react-lines-ellipsis'
+ import InfiniteScroll from 'react-infinite-scroller'
 
 const key = process.env.REACT_APP_API_KEY
 const BASE_URL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${key}`
@@ -17,21 +18,26 @@ class TvShow extends Component {
 
   componentDidMount() {
     axios.get(BASE_URL)
-      .then( res => this.setState({
-        data: res.data
-      })
+      .then( res => this.setState({data: res.data})
     )
   }
 
   render() {
-    const { results } = this.state.data
     return (
       <>
         <Grid>
-          { results.map(show =>
+          { this.state.data.results.map(show =>
           <Col xs={6} md={4}>
-            <Thumbnail src={`https://image.tmdb.org/t/p/w500${show.poster_path}`} alt="242x200 trending TV Show">
+            <Thumbnail src={`https://image.tmdb.org/t/p/w500${show.poster_path}`} alt="242x200 trending TV Show" style={{height:"750px"}}>
               <h3>{show.name}</h3>
+              <h4>User Scoring: {show.vote_average}/10</h4>
+              <h5>Overview:</h5>
+              <LinesEllipsis
+                text={show.overview}
+                maxLine='1'
+                ellipsis='...'
+                trimRight
+                />
             </Thumbnail>
           </Col>
           )}
