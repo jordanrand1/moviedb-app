@@ -11,24 +11,27 @@ class NavBar extends React.Component {
   }
   render() {
     return (
-      <Navbar inverse>
+      <Navbar inverse collapseOnSelect fluid>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/home">Home</a>
          </Navbar.Brand>
+         <Navbar.Toggle />
         </Navbar.Header>
-        <Nav>
-        <NavItem eventKey={1} href="/movies">
-          Movies
-        </NavItem>
-        <NavItem eventKey={2} href="/tvShows">
-          T.V. Shows
-        </NavItem>
-        <NavItem pullRight eventKey={3} href="/people">
-          People
-        </NavItem>
-        </Nav>   
+        <Navbar.Collapse>
+          <Nav>
+          <NavItem eventKey={1} href="/movies">
+            Movies
+          </NavItem>
+          <NavItem eventKey={2} href="/tvShows">
+            T.V. Shows
+          </NavItem>
+          <NavItem pullRight eventKey={3} href="/people">
+            People
+          </NavItem>
+          </Nav> 
         <Navbar.Text pullRight>Welcome to the Movies</Navbar.Text>     
+        </Navbar.Collapse>  
       </Navbar>
     )
   }
