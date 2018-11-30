@@ -3,10 +3,10 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const key = process.env.REACT_APP_API_KEY
-    console.log(key)
     return (
-      <p>{key}</p>
+      <>
+        <h1>Welcome</h1>
+      </>
     )
   }
 }
