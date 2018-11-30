@@ -54,6 +54,7 @@ class Home extends React.Component {
                 height: '100vh',
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].poster_path})`,
                 backgroundPositionX: 'center',
+                backgroundRepeat: 'none',
               }}>
               </div>
             </Link>
@@ -78,6 +79,7 @@ class Home extends React.Component {
                 height: '100vh',
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].poster_path})`,
                 backgroundPositionX: 'center',
+                backgroundRepeat: 'none',
               }}>
               </div>
             </Link>
@@ -102,6 +104,7 @@ class Home extends React.Component {
                 height: '100vh',
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500${results[i].profile_path})`,
                 backgroundPositionX: 'center',
+                backgroundRepeat: 'none',
               }}>
               </div>
             </Link>
