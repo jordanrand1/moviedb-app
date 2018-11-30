@@ -30,7 +30,7 @@ class People extends React.Component {
       <Grid>
         { results.map(r =>
         <Col xs={6} md={4}>
-          <Thumbnail src={`https://image.tmdb.org/t/p/w500${r.profile_path}`} alt="242x200 trending person">
+          <Thumbnail src={`https://image.tmdb.org/t/p/w500${r.profile_path}`} alt="trending person">
             <h3>{r.name}</h3>
             <p>{r.known_for_department}</p>
           </Thumbnail>
