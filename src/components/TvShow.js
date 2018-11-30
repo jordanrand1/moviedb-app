@@ -12,7 +12,7 @@ const BASE_URL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${key}`
 
 class TvShow extends Component {
   state = {
-    data: {}
+    data: { results: [] }
   }
 
   componentDidMount() {
@@ -23,30 +23,21 @@ class TvShow extends Component {
     )
   }
 
-  show = () => {
-  const { results } = this.state.data
+  render() {
+    const { results } = this.state.data
     return (
-    <Grid>
-          { results.map(r =>
+      <>
+        <Grid>
+          { results.map(show =>
           <Col xs={6} md={4}>
-            <Thumbnail src={`https://image.tmdb.org/t/p/w500${r.profile_path}`} alt="242x200 trending person">
-              <h3>{r.name}</h3>
+            <Thumbnail src={`https://image.tmdb.org/t/p/w500${show.poster_path}`} alt="242x200 trending TV Show">
+              <h3>{show.name}</h3>
             </Thumbnail>
           </Col>
           )}
-      </Grid>
-    )
-  }
-  
-  
-  render() {
-    return (
-        <>
-        <Grid style={{padding: '0px', margin: '0px', width: '100%'}}>
-            {this.show()}
         </Grid>
-        </>
-    );
+      </>
+    )
   }
 }
 
