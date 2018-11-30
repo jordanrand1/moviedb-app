@@ -4,6 +4,7 @@ import {
   Nav,
   NavItem,
 } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 class NavBar extends React.Component {
   rightNavs = () => {
@@ -14,20 +15,28 @@ class NavBar extends React.Component {
       <Navbar inverse collapseOnSelect fluid>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/home">Home</a>
+            <NavLink to="/">
+            Home
+            </NavLink>
          </Navbar.Brand>
          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-          <NavItem eventKey={1} href="/movies">
-            Movies
+          <NavItem>
+            <NavLink eventKey={1} to="/movies">
+              Movies
+            </NavLink>
           </NavItem>
-          <NavItem eventKey={2} href="/tvShows">
-            T.V. Shows
+          <NavItem>
+            <NavLink eventKey={2} to="/tvShows">
+              T.V. Shows
+            </NavLink>
           </NavItem>
-          <NavItem pullRight eventKey={3} href="/people">
-            People
+          <NavItem>
+            <NavLink pullRight eventKey={3} to="/people">
+              People
+            </NavLink>
           </NavItem>
           </Nav> 
         <Navbar.Text pullRight>Welcome to the Movies</Navbar.Text>     
