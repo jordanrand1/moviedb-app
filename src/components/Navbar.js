@@ -7,9 +7,6 @@ import {
 import { NavLink } from 'react-router-dom';
 
 class NavBar extends React.Component {
-  rightNavs = () => {
-    const { user, dispatch, history } = this.props
-  }
   render() {
     return (
       <Navbar inverse collapseOnSelect fluid style={{marginBottom: '0px'}}>

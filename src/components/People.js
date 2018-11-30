@@ -30,7 +30,7 @@ class People extends React.Component {
         if (r.profile_path !== null) {
           return(
             <Col xs={6} md={4}>
-              <Thumbnail style={{height: "750px"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} alt="trending person">
+              <Thumbnail style={{height: "47em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
                 <h3>{r.name}</h3>
                 <p>{r.known_for_department}</p>
               </Thumbnail>
@@ -39,7 +39,7 @@ class People extends React.Component {
           } else {
             return(
               <Col xs={6} md={4}>
-                <Thumbnail style={{height: "750px"}} src={Blank_Avatar} alt="trending person">
+                <Thumbnail style={{height: "47em"}} src={Blank_Avatar} responsive alt="trending person">
                   <h3>{r.name}</h3>
                   <p>{r.known_for_department}</p>
                 </Thumbnail>
