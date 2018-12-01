@@ -8,24 +8,40 @@ import {
   Thumbnail,
   Image
 } from 'react-bootstrap';
-import TvShow from './TvShow';
+import InfiniteScroll from 'react-infinite-scroller';
 
-const key = process.env.REACT_APP_API_KEY
-const BASE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${key}`
 
 class People extends React.Component {
-
+  
   state = {
-    data: { results: [] }
+    data: { results: [] },
+    results: [],
+    page: 1, 
+    totalPages: 0,
   }
-
+  
   componentDidMount() {
+    const key = process.env.REACT_APP_API_KEY
+    const BASE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${key}&page=${this.state.page}`
     axios.get(BASE_URL)
       .then( res => this.setState({
-        data: res.data
-      })
+        data: res.data, results: res.data.results, totalPages: res.data.total_pages})
     )
   }
+
+  morePeople = () => {
+    const newPage = this.state.page + 1
+    const key = process.env.REACT_APP_API_KEY
+    const BASE_URL = `https://api.themoviedb.org/3/trending/person/week?api_key=${key}&page=${newPage}`
+    axios.get(BASE_URL)
+      .then( res => {
+        this.setState({
+          results: [...this.state.results, ...res.data.results], 
+          page: newPage,
+        
+        })
+      })
+   }
 
   nullPicture = () => {
     const { results } = this.state.data 
@@ -59,7 +75,14 @@ class People extends React.Component {
     return (
       <>
         <Grid>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={() => this.morePeople()}
+          hasMore={this.state.page < this.state.totalPages} 
+          loader={<div className='loader' key={0}>Loading ...</div>}
+          >
           {this.nullPicture()}
+          </InfiniteScroll>
         </Grid>
       </>
     )
