@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import LinesEllipis from 'react-lines-ellipsis'
 import avatar_blank_tall from '../Images/avatar_blank_tall.png';
 import { Link } from 'react-router-dom';
 import {
