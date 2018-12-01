@@ -26,13 +26,14 @@ class PersonView extends React.Component{
     const {
       name,
       birthday,
+      deathday,
       biography,
       profile_path
     } = this.state.data
     return(
       <>
         <Jumbotron>
-          <h1>{name} {birthday} </h1>
+          <h1>{name} {birthday} {deathday}</h1>
           <div style={{display: 'flex', justifyContent: 'center', textAlign: 'center', marginRight: '1em'}}>
           <Image  src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt="Picture of Person" />
           <p>{biography}</p>
