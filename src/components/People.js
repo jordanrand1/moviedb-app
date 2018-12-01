@@ -72,7 +72,7 @@ class People extends React.Component {
                     <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
                     <h3>{r.name}</h3>
                     <p>Known For {r.known_for_department}</p>
-                    <p>Known Work {r.known_for[0].original_title}</p>
+                    {r.known_for[0].original_title}
                   </Thumbnail>
                 </Col>
                 )
