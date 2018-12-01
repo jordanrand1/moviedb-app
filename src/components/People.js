@@ -43,45 +43,42 @@ class People extends React.Component {
       })
    }
 
-  nullPicture = () => {
-    const { results } = this.state.data 
-      return results.map(r => { 
-        if (r.profile_path !== null) {
-          return(
-            <Col xs={6} md={4}>
-              <Thumbnail style={{height: "45em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
-                <h3>{r.name}</h3>
-                <p>Known For {r.known_for_department}</p>
-                <p>Known Work {r.known_for[0].original_title}</p>
-              </Thumbnail>
-            </Col>
-            )
-          } else {
+  render() {
+    return (
+      <>
+        <Grid>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={() => this.morePeople()}
+            hasMore={this.state.page < this.state.totalPages} 
+            loader={<div className='loader' key={0}>Loading ...</div>}
+            >
+        { 
+          this.state.results.map(r => { 
+          if (r.profile_path !== null) {
             return(
               <Col xs={6} md={4}>
-                <Thumbnail style={{height: "45em"}} responsive>
-                  <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
+                <Thumbnail style={{height: "45em"}} src={`https://image.tmdb.org/t/p/w500/${r.profile_path}`} responsive alt="trending person">
                   <h3>{r.name}</h3>
                   <p>Known For {r.known_for_department}</p>
                   <p>Known Work {r.known_for[0].original_title}</p>
                 </Thumbnail>
               </Col>
               )
-            }
-          })
-        }
-
-  render() {
-    return (
-      <>
-        <Grid>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={() => this.morePeople()}
-          hasMore={this.state.page < this.state.totalPages} 
-          loader={<div className='loader' key={0}>Loading ...</div>}
-          >
-          {this.nullPicture()}
+            } else {
+              return(
+                <Col xs={6} md={4}>
+                  <Thumbnail style={{height: "45em"}} responsive>
+                    <Image style={{height: "36em", width: "23em"}} src={avatar_blank_tall} alt="Trending Person"/>
+                    <h3>{r.name}</h3>
+                    <p>Known For {r.known_for_department}</p>
+                    <p>Known Work {r.known_for[0].original_title}</p>
+                  </Thumbnail>
+                </Col>
+                )
+              }
+            })
+          }
           </InfiniteScroll>
         </Grid>
       </>
