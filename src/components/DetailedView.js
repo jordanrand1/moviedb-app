@@ -12,6 +12,7 @@ const Container = styled.div`
 const Background = styled.div`
   background-color: #101010;
   padding-top: 50px;
+  padding-bottom: 50px;
 `
 
 class DetailedView extends React.Component {
