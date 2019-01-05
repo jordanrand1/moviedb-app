@@ -46,6 +46,7 @@ class People extends React.Component {
   render() {
     return (
       <>
+      <h1 align="center">Weekly Trending People</h1>
         <Grid>
           <InfiniteScroll
             pageStart={0}
